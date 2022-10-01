@@ -14,7 +14,7 @@ Here's some more details on the configuration options:
 
 #### `$name` (required)
 
-This is the namesapce string that is used to identifier the callback when called via the cart update API.
+This is the namespace string that is used to identifier the callback when called via the cart update API.
 
 #### `callback()` (required)
 
