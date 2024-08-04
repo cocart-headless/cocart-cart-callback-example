@@ -26,23 +26,15 @@ If the callback function is missing an error will return when called.
 
 > This example shows we are triggering a callback to use 10 points to save on the cart total.
 
-```js
-// import CoCartAPI from "@cocart/cocart-rest-api"; // Supports ESM
-const CoCartAPI = require("@cocart/cocart-rest-api").default;
-
-const CoCart = new CoCartAPI({
-  url: "https://example.com",
-  version: "cocart/v2"
-});
-
-var data = {
+```http
+curl --location --request POST 'https://example.com/wp-json/cocart/v2/cart/update' \
+--header 'Content-Type: application/json' \
+--data '{
   "namespace": "my-custom-callback",
   "data": {
     "points": "10",
   }
-};
-
-CoCart.post("cart/update", data);
+}'
 ```
 
 ---
