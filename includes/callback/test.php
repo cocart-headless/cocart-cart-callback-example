@@ -2,10 +2,9 @@
 /**
  * CoCart - A custom callback triggered when updating the cart.
  *
- * @author   Sébastien Dumont
- * @category Callbacks
- * @package  CoCart\Callback
- * @license  GPL-2.0+
+ * @author  Sébastien Dumont
+ * @package CoCart\Callback
+ * @license GPL-2.0+
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,7 +20,8 @@ class CoCart_Callback_Test extends CoCart_Cart_Extension_Callback {
 	 * Callback name.
 	 *
 	 * @access protected
-	 * @var    string
+	 *
+	 * @var string
 	 */
 	protected $name = 'test';
 
@@ -29,16 +29,16 @@ class CoCart_Callback_Test extends CoCart_Cart_Extension_Callback {
 	 * Callback to update the cart.
 	 *
 	 * @access public
-	 * @param  WP_REST_Request $request Full details about the request.
+	 *
+	 * @param WP_REST_Request $request Full details about the request.
 	 */
-	public function callback( $request ) {
-		$data = $request['data']; // Use this to access additional passed data if any.
+	public function callback( $request, $controller ) {
+		$data = $request['data']; // Custom parameter.
 
 		// Place your callback here.
 
 		return true;
 	}
-
 } // END class
 
 return new CoCart_Callback_Test();

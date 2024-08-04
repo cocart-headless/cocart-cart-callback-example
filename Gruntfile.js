@@ -8,23 +8,6 @@ module.exports = function(grunt) {
 		{
 			pkg: grunt.file.readJSON( 'package.json' ),
 
-			// Update developer dependencies
-			devUpdate: {
-				packages: {
-					options: {
-						packageJson: null,
-						packages: {
-							devDependencies: true,
-							dependencies: false
-						},
-						reportOnlyPkgs: [],
-						reportUpdated: false,
-						semver: true,
-						updateType: 'force'
-					}
-				}
-			},
-
 			// Generate .pot file
 			makepot: {
 				target: {
@@ -37,13 +20,13 @@ module.exports = function(grunt) {
 							'vendor'
 						],
 						mainFile: '<%= pkg.name %>.php', // Main project file.
-						potComments: 'Copyright (c) {year} Sébastien Dumont\nThis file is distributed under the same license as the CoCart package.', // The copyright at the beginning of the POT file.
+						potComments: 'Copyright (c) {year} CoCart Headless, LLC\nThis file is distributed under the same license as the CoCart package.', // The copyright at the beginning of the POT file.
 						potFilename: '<%= pkg.name %>.pot', // Name of the POT file.
 						potHeaders: {
 							'poedit': true,                                       // Includes common Poedit headers.
 							'x-poedit-keywordslist': true,                        // Include a list of all possible gettext functions.
-							'Report-Msgid-Bugs-To': 'https://github.com/co-cart/cocart-cart-callback-example/issues',
-							'language-team': 'Sébastien Dumont <mailme@sebastiendumont.com>',
+							'Report-Msgid-Bugs-To': 'support@cocartapi.com',
+							'language-team': 'CoCart Headless, LLC <support@cocartapi.com>',
 							'language': 'en_US'
 						},
 						processPot: function( pot ) {
@@ -143,12 +126,16 @@ module.exports = function(grunt) {
 							to: "Requires PHP: <%= pkg.requires_php %>"
 						},
 						{
-							from: /WC requires at least:.*$/m,
-							to: "WC requires at least: <%= pkg.wc_requires %>"
+							from: /Tested up to:.*$/m,
+							to: 'Tested up to: <%= pkg.tested_up_to %>'
 						},
 						{
-							from: /WC tested up to:.*$/m,
-							to: "WC tested up to: <%= pkg.wc_tested_up_to %>"
+							from: /CoCart requires at least:.*$/m,
+							to: 'CoCart requires at least: <%= pkg.cocart_requires %>'
+						},
+						{
+							from: /CoCart tested up to:.*$/m,
+							to: 'CoCart tested up to: <%= pkg.cocart_tested_up_to %>'
 						},
 						{
 							from: /Version:.*$/m,
@@ -157,18 +144,6 @@ module.exports = function(grunt) {
 						{
 							from: /public static \$version = \'.*.'/m,
 							to: "public static $version = '<%= pkg.version %>'"
-						},
-						{
-							from: /public static \$required_wp = \'.*.'/m,
-							to: "public static $required_wp = '<%= pkg.requires %>'"
-						},
-						{
-							from: /public static \$required_woo = \'.*.'/m,
-							to: "public static $required_woo = '<%= pkg.wc_requires %>'"
-						},
-						{
-							from: /public static \$required_php = \'.*.'/m,
-							to: "public static $required_php = '<%= pkg.requires_php %>'"
 						}
 					]
 				},

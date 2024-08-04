@@ -1,7 +1,7 @@
 {
-	"name": "co-cart/cocart-cart-callback-example",
+	"name": "cocart-headless/cocart-cart-callback-example",
 	"description": "An example of registering a callback that can be triggered when updating the cart with CoCart.",
-	"homepage": "https://cocart.xyz",
+	"homepage": "https://cocartapi.com",
 	"type": "wordpress-plugin",
 	"keywords": [
 		"wordpress",
@@ -28,26 +28,23 @@
 	"minimum-stability": "stable",
 	"authors": [
 		{
-			"name": "Sébastien Dumont",
-			"email": "mailme@sebastiendumont.com",
-			"homepage": "https://sebastiendumont.com",
-			"role": "Developer"
+			"name": "CoCart Headless, LLC",
+			"email": "support@cocartapi.com",
+			"homepage": "https://cocartapi.com",
+			"role": "Owner"
 		}
 	],
-	"support": {
-		"issues": "https://github.com/co-cart/cocart-cart-callback-example/issues"
-	},
 	"autoload": {
 		"classmap": [
 			"includes/"
 		]
 	},
 	"require": {
-		"composer/installers": "2.2.0",
-		"co-cart/cocart-sniffs": "0.0.2"
+		"composer/installers": "^2.0"
 	},
 	"require-dev": {
-		"squizlabs/php_codesniffer": "3.7.2"
+		"cocart-headless/cocart-sniffs": "0.0.3",
+		"automattic/vipwpcs": "^3.0"
 	},
 	"scripts": {
 		"phpcs": [
@@ -64,6 +61,12 @@
 		"scripts-description": {
 			"phpcs": "Analyze code against the WordPress coding standards with PHP_CodeSniffer",
 			"phpcbf": "Fix coding standards warnings/errors automatically with PHP Code Beautifier"
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	}
 }
